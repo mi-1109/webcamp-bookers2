@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   #ユーザ登録時にnameのデータ操作を許可
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:name])
   end
 
 end

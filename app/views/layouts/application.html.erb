@@ -12,7 +12,7 @@
   <body>
     <% if user_signed_in? %>
       <li>
-        <%= link_to "Home", root_path %> <!--パス要変更--!>
+        <%= link_to "Home", user_path(current_user.id) %> <!--パス要変更--!>
       </li>
       <li>
         <%= link_to "Users", root_path %> <!--パス要変更--!>

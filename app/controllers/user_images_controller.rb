@@ -1,3 +1,0 @@
-class UserImagesController < ApplicationController
-  
-end

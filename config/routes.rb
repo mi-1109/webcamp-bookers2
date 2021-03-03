@@ -5,4 +5,7 @@ Rails.application.routes.draw do
 
   resources :books, only: [:create, :index, :show, :edit, :destroy]
   resources :users, only: [:index, :show, :edit, :update]
+
+  delete '/books/:id', to: 'books#destroy', as: 'destroy_book'
 end
+

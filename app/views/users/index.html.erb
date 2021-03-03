@@ -1,0 +1,20 @@
+<h1>Users</h1>
+
+<!--ユーザ一覧-->
+<table>
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td class="user-img"><%= user.name %></td> <!--imgに変える-->
+        <td class="user-name"><%= user.name %></td>
+        <td><%= link_to "Show", user_path(user.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

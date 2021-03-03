@@ -1,0 +1,17 @@
+<!--ログインしていた場合に共通の左サイドバー要素-->
+
+<div class="user-info">
+  <h1>User Info</h1>
+  <%= attachment_image_tag user, :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg" %>
+  <table>
+    <tr>
+      <td>name</td>
+      <td><%= current_user.name %></td>
+    </tr>
+    <tr>
+      <td>introduction</td>
+      <td><%= current_user.introduction %></td>
+      <td><%= link_to "EDIT PROFILE", edit_user_path(current_user.id) %></td>
+    </tr>
+  </table>
+</div>

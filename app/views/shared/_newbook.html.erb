@@ -1,9 +1,18 @@
-<!--ログインしていた場合に共通の左サイドバー要素-->
+<!--New Book投稿フォーム（ログイン時のみ表示）-->
+
+<% if book.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(book.errors.count, "error") %> prohibited this product from being saved:</h2>
+    <ul>
+      <% book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <div class="new-book">
   <h1>New Book</h1>
-
-
   <%= form_with model:book, local:true do |f| %>
     <div>
       <h4 class="new-title">Title</h4>

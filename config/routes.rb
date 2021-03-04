@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   get '/about', to: 'homes#collection', as: 'about'
   delete '/books/:id', to: 'books#destroy', as: 'destroy_book'
 
+
 end
 

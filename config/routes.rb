@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :books, only: [:create, :index, :show, :edit, :update, :destroy]
   resources :users, only: [:index, :show, :edit, :update]
 
+  get '/about', to: 'homes#collection', as: 'about'
   delete '/books/:id', to: 'books#destroy', as: 'destroy_book'
+
 end
 

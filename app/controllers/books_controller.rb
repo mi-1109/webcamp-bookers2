@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
 
+  before_action :correct_user, only:[:edit, :update, :destroy]
+
   def create
     @book = Book.new(book_params)
     if @book.save
@@ -44,5 +46,11 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit(:title, :body) .merge(user_id: current_user.id)
+  end
+
+  def correct_user
+    @book = Book.find(params[:id])
+    @user = User.find(@book.user_id)
+    redirect_to books_path unless @user == current_user
   end
 end

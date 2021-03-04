@@ -6,12 +6,12 @@
   <table>
     <tr>
       <td>name</td>
-      <td><%= current_user.name %></td>
+      <%= current_user.name %>
     </tr>
     <tr>
       <td>introduction</td>
-      <td><%= current_user.introduction %></td>
-      <td><%= link_to "EDIT PROFILE", edit_user_path(current_user.id) %></td>
+      <%= current_user.introduction %>
+    <%= link_to "EDIT PROFILE", edit_user_path(current_user.id) %></td>
     </tr>
   </table>
 </div>

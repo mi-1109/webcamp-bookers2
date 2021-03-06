@@ -1,20 +1,24 @@
-<!--New Book投稿フォーム（ログイン時のみ表示）-->
+<div class="container">
+  <div class="row">
+    <div class="col-3">
 
-<div class="new-book">
-  <h1>New Book</h1>
-  <%= form_with model:book, local:true do |f| %>
-    <div>
-      <h4 class="new-title">Title</h4>
-      <%= f.text_field :title %>
+        <h2 id="newbook-title">New Book</h2>
+        <%= form_with model:book, local:true do |f| %>
+          <div>
+            <h4 class="new-form">Title</h4>
+            <%= f.text_field :title %>
+          </div>
+
+         <div class="new-form">
+            <h4 class="new-body">Opinion</h4>
+            <%= f.text_area :body %>
+         </div>
+
+          <div id="newbook-btn">
+            <input type="submit" name="commit" value="Create Book" class="btn btn-sm btn-success" data-disable-with="Create Book">
+          </div>
+        <% end %>
+
     </div>
-
-   <div class="field">
-      <h4 class="new-body">Opinion</h4>
-      <%= f.text_area :body %>
-   </div>
-
-    <div class="submit">
-      <%= f.submit 'Create Book' %>
-    </div>
-  <% end %>
+  </div>
 </div>

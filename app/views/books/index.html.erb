@@ -1,27 +1,35 @@
 <%= render 'shared/error_book', book: @book %>
 
-<!--左サイドバー-->
-<%= render 'shared/userinfo', user: @user %>
-<%= render 'shared/newbook', book: @book %>
+<div class="container">
+  <div class="row">
 
-<!--全ユーザ投稿一覧-->
-<h1>Books</h1>
+      <div class="col-3">
+        <%= render partial: 'shared/sidebar', locals: { user: @user, book: @book } %>
+      </div>
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>Title</th>
-      <th>Opinion</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @books.each do |book| %>
-      <tr>
-        <td><%= attachment_image_tag User.find(book.user_id), :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg" %></td>
-        <td><%= link_to book.title, book_path(book.id) %></td>
-        <td><%= book.body %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="col-8">
+        <h1>Books</h1>
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Title</th>
+              <th>Opinion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @books.each do |book| %>
+              <tr>
+                <td><%= attachment_image_tag User.find(book.user_id), :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg" %></td>
+                <td><%= link_to book.title, book_path(book.id) %></td>
+                <td><%= book.body %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+    　</div>
+  </div>
+</div>
+
+

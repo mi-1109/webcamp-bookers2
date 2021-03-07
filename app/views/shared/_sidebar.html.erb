@@ -22,17 +22,19 @@
 <!--New Book-->
 <h2 id="newbook-title">New Book</h2>
 <%= form_with model:book, local:true do |f| %>
-  <div>
-    <h4 class="new-form">Title</h4>
-    <%= f.text_field :title %>
-  </div>
+  <form>
+    <div class="form-group">
+      <h4 class="new-form">Title</h4>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
 
- <div>
-    <h4 class="new-form">Opinion</h4>
-    <%= f.text_area :body %>
- </div>
+   <div class="form-group">
+      <h4 class="new-form">Opinion</h4>
+      <%= f.text_area :body, class: "form-control" %>
+   </div>
 
-  <div class="submit">
-    <%= f.submit 'Create Book', class:"btn btn-sm btn-success" %>
-  </div>
+    <div class="submit form-group">
+      <%= f.submit 'Create Book', class:"btn btn-sm btn-success" %>
+    </div>
+  </form>
 <% end %>

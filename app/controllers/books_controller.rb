@@ -5,7 +5,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-      redirect_to books_path, notice: "successfully registered your post!"
+      redirect_to book_path(@book.id), notice: "successfully registered your post!"
     else
       @books = Book.all
       render action: :index
@@ -40,7 +40,7 @@ class BooksController < ApplicationController
   def destroy
     book = Book.find(params[:id])
     book.destroy
-    redirect_to books_path, notice: "successfully deleted"
+    redirect_to books_path
   end
 
   private

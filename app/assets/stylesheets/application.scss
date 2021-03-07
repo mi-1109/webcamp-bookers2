@@ -33,6 +33,12 @@
 .table {
   margin-top: 7px;
   margin-bottom: 12px;
+  width: 100%;
+  // width: auto !important;
+}
+
+.table th {
+  white-space: nowrap;
 }
 
 .table td {
@@ -45,6 +51,10 @@
 
 #newbook-btn {
   margin-top: 10px;
+}
+
+.new-form {
+  font-size: 16px;
 }
 
 #book_title {

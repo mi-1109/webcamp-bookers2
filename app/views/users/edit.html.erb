@@ -1,13 +1,31 @@
 <%= render 'shared/error_user', user: @user %>
 
-<h1>User Info</h1>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-sm-12 col-md8 col-lg-5">
 
-<%= form_with model:@user, local:true do |f| %>
-  <label for="inputName">Name</label>
-  <%= f.text_field :name, autofocus: true %>
-  <label for="inputImage">Image</label>
-  <%= f.attachment_field :profile_image %>
-  <label for="inputText">Introduction</label>
-  <%= f.text_area :introduction, autofocus: true %>
-  <%= f.submit "Update User" %>
-<% end %>
+      <h1>User Info</h1>
+      <form>
+          <%= form_with model:@user, local:true do |f| %>
+            <div class="form-group">
+              <label for="inputName">Name</label>
+              <%= f.text_field :name, autofocus: true, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <label for="inputImage">Image</label>
+                <div class="row pl-3">
+                  <%= f.attachment_field :profile_image %>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="inputText">Introduction</label>
+              <%= f.text_area :introduction, autofocus: true, class: "form-control" %>
+            </div>
+            <%= f.submit "Update User" %>
+          <% end %>
+      </form>
+
+    </div>
+  </div>
+</div>
+

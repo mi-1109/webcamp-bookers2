@@ -32,7 +32,7 @@
     <%= f.text_area :body %>
  </div>
 
-  <div id="newbook-btn">
-    <input type="submit" name="commit" value="Create Book" class="btn btn-sm btn-success" data-disable-with="Create Book">
+  <div class="submit">
+    <%= f.submit 'Create Book', class:"btn btn-sm btn-success" %>
   </div>
 <% end %>

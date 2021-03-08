@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
 
-      <div class="col-3 mr-5">
+      <div class="col-md-3">
         <%= render partial: 'shared/sidebar', locals: { user: @user, book: @book } %>
       </div>
 
-      <div class="col-8">
+      <div class="col-md-8 offset-md-1">
         <h1>Book detail</h1>
         <table class="table">
           <tbody>

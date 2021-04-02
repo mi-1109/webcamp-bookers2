@@ -3,8 +3,14 @@ class BookCommentsController < ApplicationController
     book = Book.find(params[:book_id])
     comment = current_user.book_comments.new(book_comment_params) #ログインユーザのコメントをnewする。newするときにbook_comment_paramsの値が入る
     comment.book_id = book.id
-    comment.save
-    redirect_to book_path(book)
+    if comment.save
+      redirect_to book_path(book)
+    else
+      @book = book
+      @book_comment = comment
+      @user = current_user
+      render template: "books/show"
+    end
   end
 
   def destroy

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get '/home/about', to: 'homes#collection', as: 'about'
   delete '/books/:id', to: 'books#destroy', as: 'destroy_book'
 
+  post 'follow/:id' => 'relationships#follow', as: 'follow' # フォローする
+  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す
 
 end
 

@@ -12,6 +12,25 @@
       <td><strong>introduction</strong></td>
       <td><strong><%= user.introduction %></strong></td>
     </tr>
+    <tr>
+      <td><strong>follows</strong></td>
+      <td><%= "#{user.follower.count}" %></td>
+    </tr>
+    <tr>
+      <td><strong>followers</strong></td>
+      <td><%= "#{user.followed.count}" %></td>
+    </tr>
+    <% if @user.id != current_user.id %>
+    <tr>
+      <td>
+        <% if current_user.following?(user) %>
+          <a class="btn btn-sm btn-info" href="/unfollow/<%= user.id %>" data-method="post">フォロー外す</a>
+        <% else %>
+         <a class="btn btn-sm btn-info" href="/follow/<%= user.id %>" data-method="post">フォローする</a>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
   </tbody>
 </table>
 <div>

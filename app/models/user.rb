@@ -8,15 +8,20 @@ class User < ApplicationRecord
   has_many :book_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy #フォローするユーザ取得。follower_idにuser_idを格納。
-  has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy #フォローされるユーザ取得。followed_idにuser_idを格納。
+  #フォローする側のUserから見て、フォローされる側のUserを(中間テーブルを介して)集める。なので親はfollower_id(フォローする側)。follower_idにuser_idを格納。
+  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  #フォローされる側のUserから見て、フォローしてくる側のUserを(中間テーブルを介して)集める。なので親はfollowed_id(フォローされる側)followed_idにuser_idを格納。
+  has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
 
-  #以下、@user.followingsとした際に、「@userがフォローしているUser一覧」を返すための記述
-  #自分がフォローしているユーザと、自分をフォローしているユーザをthroughを使った関連付けで取得する
-  has_many :following_user, through: :follower, source: :followed #自分がフォローしているユーザ
-  has_many :follower_user, through: :followed, source: :follower  #自分をフォローしているユーザ
+  # =================== @user.followingsとした際に「@userがフォローしているUser一覧」を返すための記述 ===============================
+  # ===================自分がフォローしているユーザと、自分をフォローしているユーザをthroughを使った関連付けで取得する===============
+  #自分がフォローしているユーザ
+  has_many :following_user, through: :follower, source: :followed
+  #自分をフォローしているユーザ
+  has_many :follower_user, through: :followed, source: :follower
 
-  #フォローする・フォロー外す・フォローしているか確認を行うメソッド
+
+  # =================== フォローする・フォロー外す・フォローしているか確認を行うメソッド ===========================================
   #ユーザをフォローする
   def follow(user_id)
     follower.create(followed_id: user_id)

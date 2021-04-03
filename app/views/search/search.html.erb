@@ -1,0 +1,7 @@
+<h1><%= "#{@model} search for #{@value}" %></h1>
+
+<% if @model == 'user' %>
+  <%= render 'users/search', users: @search_data %>
+<% else @model == 'book' %>
+  <%= render 'books/search', books: @search_data %>
+<% end %>

@@ -14,11 +14,11 @@
     </tr>
     <tr>
       <td><strong>follows</strong></td>
-      <td><%= "#{user.follower.count}" %></td>
+      <td><%= link_to "#{user.follower.count}", user_followings_path(user.id) %></td>
     </tr>
     <tr>
       <td><strong>followers</strong></td>
-      <td><%= "#{user.followed.count}" %></td>
+      <td><%= link_to "#{user.followed.count}", user_followers_path(user.id) %></td>
     </tr>
     <% if @user.id != current_user.id %>
     <tr>

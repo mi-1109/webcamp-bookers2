@@ -63,7 +63,7 @@
             <!--{"表示名(User)" => "参照したいモデル名(user)"}-->
             <%= f.select 'search[model]', options_for_select({ "User" => "user", "Book" => "book"}) %>
             <!--{"表示名(完全一致)" => "変数名(match)"}-->
-            <%= f.select 'search[how]', options_for_select({ "完全一致" => "exact_match", "前方一致" => "forward_match", "後方一致" => "backward_match", "部分一致" => "partical_match"  }) %>
+            <%= f.select 'search[method]', options_for_select({ "完全一致" => "exact_match", "前方一致" => "forward_match", "後方一致" => "backward_match", "部分一致" => "partial_match"  }) %>
             <%= f.submit :"Go" %>
           <% end %>
         <% end %>

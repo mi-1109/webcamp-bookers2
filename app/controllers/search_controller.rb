@@ -6,6 +6,7 @@ class SearchController < ApplicationController
     @value = params["search"]["value"]
     @method = params["search"]["method"]
     @search_data = search_for(@model, @value, @method) # search_forの引数にインスタンス変数を渡すと、@search_dataに最終的な検索結果が入る
+
   end
 
   private
@@ -17,28 +18,28 @@ class SearchController < ApplicationController
       if method == 'exact_match'
         User.where(name: value)
       #選択した検索方法が部分一致のとき
-      elsif
+      elsif method == 'partial_match'
         User.where('name LIKE ?', "%#{value}%")
       #選択した検索方法が前方一致のとき
-      elsif
+      elsif method == 'forward_match'
         User.where('name LIKE?', "#{value}%")
-      else
+      elsif method == 'backward_match'
       #選択した検索方法が後方一致のとき
-        User.where('name LIKE?', "%#{value}%")
+        User.where('name LIKE?', "%#{value}")
       end
     #選択したモデルがbookの場合
     elsif model == 'book'
       if method == 'exact_match'
-        Book.where(name: value)
+        Book.where(title: value)
       #選択した検索方法が部分一致のとき
-      elsif
-        Book.where('name LIKE ?', "%#{value}%")
+      elsif method == 'partial_match'
+        Book.where('title LIKE ?', "%#{value}%")
       #選択した検索方法が前方一致のとき
-      elsif
-        Book.where('name LIKE?', "#{value}%")
-      else
+      elsif method == 'forward_match'
+        Book.where('title LIKE?', "#{value}%")
+      elsif method == 'backward_match'
       #選択した検索方法が後方一致のとき
-        Book.where('name LIKE?', "%#{value}%")
+        Book.where('title LIKE?', "%#{value}")
       end
     end
   end

@@ -1,4 +1,4 @@
-<!-------------ユーザの検索結果--------------->
+<!-------------Userの検索結果--------------->
 
 <table class="table">
   <thead>
@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @users.each do |user| %>
+    <% users.each do |user| %>
       <tr>
         <td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %></td>
         <td><%= user.name %></td>

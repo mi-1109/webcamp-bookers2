@@ -35,14 +35,9 @@
         <div class="comments">
         <%= render 'shared/error_comment', book_comment: @book_comment %>
           <h3 class="mb-3 mt-2">Comments</h3>
-          <table>
-            <tbody>
-              <div id="book_comments_list">
-                <%= render partial: './book_comments/book_comment', locals: { book: @book} %>
-              </div>
-
-           </tbody>
-          </table>
+          <div id="book_comments_list">
+            <%= render partial: './book_comments/book_comment', locals: { book: @book} %>
+          </div>
         </div>
 
         <div class="new-comment mt-4">

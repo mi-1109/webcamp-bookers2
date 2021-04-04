@@ -1,0 +1,15 @@
+<% book.book_comments.each do |book_comment| %>
+  <tr>
+    <td class="mb-2">
+      <%= attachment_image_tag book_comment.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
+    </td>
+    <td>
+      <p class="ml-2"><%= book_comment.comment %></p>
+    </td>
+    <% if book_comment.user == current_user %>
+    <td class="delete-comment">
+      <a class="btn btn-sm btn-danger ml-5" href="/books/<%= book_comment.book.id %>/book_comments/<%= book_comment.id %>" data-method="delete">Destroy</a>
+    </td>
+    <% end %>
+  </tr>
+<% end %>

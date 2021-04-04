@@ -40,7 +40,7 @@
           </div>
         </div>
 
-        <div class="new-comment mt-4">
+        <div id="new-comment" class="mt-4">
           <%= form_with model:[@book, @book_comment], remote: true do |f| %>
             <div class="form-group">
               <%= f.text_area :comment, size: "70x5", placeholder: "Put Your Comments Here", class:"form-control" %>

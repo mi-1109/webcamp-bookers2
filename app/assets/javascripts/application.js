@@ -17,3 +17,10 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+$(function () {
+  $("#testButton").click( function() {
+    // テキストボックスのデータを空にします
+    $("#sampletext").val("");
+  });
+});

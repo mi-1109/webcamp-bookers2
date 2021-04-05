@@ -8,31 +8,21 @@ class User < ApplicationRecord
   has_many :book_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  #フォローする側のUserから見て、フォローされる側のUserを(中間テーブルを介して)集める。なので親はfollower_id(フォローする側)。follower_idにuser_idを格納。
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  #フォローされる側のUserから見て、フォローしてくる側のUserを(中間テーブルを介して)集める。なので親はfollowed_id(フォローされる側)followed_idにuser_idを格納。
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
 
-  # =================== @user.followingsとした際に「@userがフォローしているUser一覧」を返すための記述 ===============================
-  # ===================自分がフォローしているユーザと、自分をフォローしているユーザをthroughを使った関連付けで取得する===============
-  #自分がフォローしているユーザ
+
   has_many :following_user, through: :follower, source: :followed
-  #自分をフォローしているユーザ
   has_many :follower_user, through: :followed, source: :follower
 
-
-  # =================== フォローする・フォロー外す・フォローしているか確認を行うメソッド ===========================================
-  #ユーザをフォローする
   def follow(user_id)
     follower.create(followed_id: user_id)
   end
 
-  #ユーザのフォローを外す
   def unfollow(user_id)
     follower.find_by(followed_id: user_id).destroy
   end
 
-  #フォローしていればtrueを返す
   def following?(user)
     following_user.include?(user)
   end
@@ -42,4 +32,21 @@ class User < ApplicationRecord
   validates :name, uniqueness: true
   validates :name, length: { in: 2..20 }
   validates :introduction, length: { maximum: 50}
+
+
+#================== 住所検索 ========================
+  #都道府県コードから都道府県名に自動で変換
+  include JpPrefecture
+  jp_prefecture :prefecture_code
+
+  #@user.prefecture_name で、該当ユーザの住所（都道府県）を表示する
+  def prefecture_name
+    JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
+  end
+
+  def prefecture_name=(prefecture_name)
+    self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+  end
+
+
 end

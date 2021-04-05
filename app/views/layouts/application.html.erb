@@ -57,14 +57,16 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-right mt-3 search-area">
-        <% if user_signed_in? %>
-          <%= form_with url:search_path, method: :get, local: true do |f| %>
-            <%= f.text_field 'search[value]' %>
-            <!--{"表示名(User)" => "参照したいモデル名(user)"}-->
-            <%= f.select 'search[model]', options_for_select({ "User" => "user", "Book" => "book"}) %>
-            <!--{"表示名(完全一致)" => "変数名(match)"}-->
-            <%= f.select 'search[method]', options_for_select({ "完全一致" => "exact_match", "前方一致" => "forward_match", "後方一致" => "backward_match", "部分一致" => "partial_match"  }) %>
-            <%= f.submit :"Go" %>
+        <% unless request.path.include?(root_path) %>
+          <% if user_signed_in? %>
+            <%= form_with url:search_path, method: :get, local: true do |f| %>
+              <%= f.text_field 'search[value]' %>
+              <!--{"表示名(User)" => "参照したいモデル名(user)"}-->
+              <%= f.select 'search[model]', options_for_select({ "User" => "user", "Book" => "book"}) %>
+              <!--{"表示名(完全一致)" => "変数名(match)"}-->
+              <%= f.select 'search[method]', options_for_select({ "完全一致" => "exact_match", "前方一致" => "forward_match", "後方一致" => "backward_match", "部分一致" => "partial_match"  }) %>
+              <%= f.submit :"Go" %>
+            <% end %>
           <% end %>
         <% end %>
         </div>

@@ -75,3 +75,5 @@ gem "pry-rails"
 gem "pry-byebug"
 
 gem 'dotenv-rails'
+
+gem 'whenever', require: false

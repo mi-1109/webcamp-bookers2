@@ -24,15 +24,18 @@
     <tr>
       <td>
         <% if current_user.following?(user) %>
-          <a class="btn btn-sm btn-info" href="/unfollow/<%= user.id %>" data-method="post">フォロー外す</a>
+          <a class="btn btn-sm btn-info" href="/unfollow/<%= user.id %>" data-method="post">Unfollow</a>
         <% else %>
-         <a class="btn btn-sm btn-info" href="/follow/<%= user.id %>" data-method="post">フォローする</a>
+         <a class="btn btn-sm btn-info" href="/follow/<%= user.id %>" data-method="post">Follow</a>
         <% end %>
       </td>
     </tr>
     <% end %>
     <% if current_user != @user %>
-      <%= link_to 'Begin Chat', chat_path(@user.id)
+    <tr>
+      <%= link_to 'Begin Chat', chat_path(@user.id) %>
+    </tr>
+    <% end %>
   </tbody>
 </table>
 <div>

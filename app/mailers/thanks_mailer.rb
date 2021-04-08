@@ -4,6 +4,6 @@ class ThanksMailer < ApplicationMailer
 
     # mailメソッドが呼び出されると、メール本文が記載されているビューが読まれる
     @name = name
-    mail to: email, subject: 'Thanks for Joining to Bookers2!'
+    mail to: email, subject: 'Thanks for Joining to Bookers2!' #この行の結果がregistrations_controllerの戻り値として返って、deliverされる
   end
 end

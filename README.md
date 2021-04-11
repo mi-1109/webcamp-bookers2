@@ -1,24 +1,16 @@
-# README
+## DMM WEBCAMPコンテンツ【課題: Bookers2アプリケーション】
+DMM WEBCAMPの学習コンテンツで課題として記述した、RubyおよびRuby on Railsを使用したアプリケーションです。
+ユーザーがそれぞれ好みの本を投稿できます。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### 実装機能
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- ユーザー認証機能（新規登録/ログイン/ログアウト）
+- ユーザー情報更新機能
+- 住所自動入力機能
+- フォロー・フォロワー機能
+- チャット機能（非同期通信）
+- メール配信機能（ユーザー新規登録後自動配信）
+- バッチ処理によるメール自動配信機能
+- Book投稿
+- Book投稿編集機能
+- Bookいいね機能（非同期通信）
